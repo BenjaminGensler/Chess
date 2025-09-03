@@ -1,26 +1,34 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        // Create a Scanner object
+        Scanner scanner = new Scanner(System.in);
+
         Board board = new Board();
 
-        board.placePiece(1, 0, new Piece("black", "pawn"));
-        board.placePiece(1, 1, new Piece("black", "pawn"));
-        board.placePiece(1, 2, new Piece("black", "pawn"));
-        board.placePiece(1, 3, new Piece("black", "pawn"));
-        board.placePiece(1, 4, new Piece("black", "pawn"));
-        board.placePiece(1, 5, new Piece("black", "pawn"));
-        board.placePiece(1, 6, new Piece("black", "pawn"));
-        board.placePiece(1, 7, new Piece("black", "pawn"));
-
-        // White Pieces
-        board.placePiece(6, 0, new Piece("white", "pawn"));
-        board.placePiece(6, 1, new Piece("white", "pawn"));
-        board.placePiece(6, 2, new Piece("white", "pawn"));
-        board.placePiece(6, 3, new Piece("white", "pawn"));
-        board.placePiece(6, 4, new Piece("white", "pawn"));
-        board.placePiece(6, 5, new Piece("white", "pawn"));
-        board.placePiece(6, 6, new Piece("white", "pawn"));
-        board.placePiece(6, 7, new Piece("white", "pawn"));
+        // Adds white/black Pawns
+        for(int i = 0; i < 8; i++) {
+            board.placePiece(1, i, new Piece("black", "Pawn"));
+            board.placePiece(6, i, new Piece("white", "Pawn"));
+        }
 
         board.printBoard();
+
+        while(true) {
+            // Prompt for and read a string
+            System.out.print("Enter your next move: ");
+            String userMove = scanner.nextLine();
+
+            //convert move to function correct input
+            int fromY = (int) userMove.charAt(0) - 'a';
+            int fromX = Character.getNumericValue(userMove.charAt(1)) - 1;
+            int toY = (int) userMove.charAt(3) - 'a';
+            int toX = Character.getNumericValue(userMove.charAt(4)) - 1;
+
+            // Simulate a move
+            board.movePiece(fromX, fromY, toX, toY);
+            board.printBoard();
+        }
     }
 }
