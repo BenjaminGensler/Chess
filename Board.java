@@ -13,9 +13,16 @@ class Board {
 
     // moves object on board to x y position
     public void movePiece(int fromX, int fromY, int toX, int toY) {
-        if (board[fromX][fromY] != null) {
-            board[toX][toY] = board[fromX][fromY];
-            board[fromX][fromY] = null;
+        if (this.getPiece(fromX, fromY) != null) {
+            // check if the pieces move is legal
+            if(this.getPiece(fromX, fromY).isLegalMove(fromX, fromY, toX, toY, this) == false) {
+                System.out.println("Illegal move");
+                return;
+            }
+            else {
+                this.placePiece(toX, toY, this.getPiece(fromX, fromY));
+                this.placePiece(fromX, fromY, null);
+            }
         }
     }
 
@@ -26,33 +33,29 @@ class Board {
 
     //Display the board
     public void printBoard() {
-        // Column letters
-        System.out.print("   ");
-        for (char c = 'a'; c <= 'h'; c++) {
-            System.out.print(" " + c + " ");
-        }
-        System.out.println();
-
+        // System.out.println("printBoard() 1");
         // Top border
         System.out.print("   ");
         for (int i = 0; i < 8; i++) {
             System.out.print("---");
         }
         System.out.println();
+        // System.out.println("printBoard() 2");
 
         // Board rows with row numbers
         for (int row = 0; row < board.length; row++) {
-            System.out.print((row + 1) + " |");
+            System.out.print((8 - row) + " |");
             for (int col = 0; col < board.length; col++) {
                 Piece piece = board[row][col];
                 if (piece != null) {
-                    System.out.print(" " + piece.getType().charAt(0) + " ");
+                    System.out.print(" " + piece.getLetter() + " ");
                 } else {
                     System.out.print(" . ");
                 }
             }
             System.out.println(" |");
         }
+        // System.out.println("printBoard() 3");
 
         // Bottom border
         System.out.print("   ");
@@ -60,5 +63,16 @@ class Board {
             System.out.print("---");
         }
         System.out.println();
+        
+        // System.out.println("printBoard() 4");
+
+        // Column letters
+        System.out.print("   ");
+        for (char c = 'a'; c <= 'h'; c++) {
+            System.out.print(" " + c + " ");
+        }
+        System.out.println();
+
+        // System.out.println("printBoard() 5");
     }
 }
