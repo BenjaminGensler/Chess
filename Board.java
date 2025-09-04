@@ -42,9 +42,9 @@ class Board {
         System.out.println();
         // System.out.println("printBoard() 2");
 
-        // Board rows with row numbers
-        for (int row = 0; row < board.length; row++) {
-            System.out.print((8 - row) + " |");
+        // Board rows with row numbers (reverse order)
+        for (int row = board.length - 1; row >= 0; row--) {
+            System.out.print((row + 1) + " |");
             for (int col = 0; col < board.length; col++) {
                 Piece piece = board[row][col];
                 if (piece != null) {
@@ -55,6 +55,7 @@ class Board {
             }
             System.out.println(" |");
         }
+
         // System.out.println("printBoard() 3");
 
         // Bottom border

@@ -29,7 +29,7 @@ public class Main {
             int toY = (int) userMove.charAt(2) - 'a';
             int toX = Character.getNumericValue(userMove.charAt(3)) - 1;
 
-            System.out.println("Main Loop 3");
+            // System.out.println("Main Loop 3");
 
             // Simulate a move
             board.movePiece(fromX, fromY, toX, toY);
