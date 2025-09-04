@@ -19,6 +19,12 @@ public class Main {
         board.placePiece(7, 0, new Rook("black"));
         board.placePiece(7, 7, new Rook("black"));
 
+        // Add Knights
+        board.placePiece(0, 1, new Knight("white"));
+        board.placePiece(0, 6, new Knight("white"));
+        board.placePiece(7, 1, new Knight("black"));
+        board.placePiece(7, 6, new Knight("black"));
+
         board.printBoard();
 
         while(true) {

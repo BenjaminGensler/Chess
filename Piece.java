@@ -21,6 +21,8 @@ public class Piece {
                 return color.equalsIgnoreCase("white") ? 'P' : 'p';
             case "rook":
                 return color.equalsIgnoreCase("white") ? 'R' : 'r';
+            case "knight":
+                return color.equalsIgnoreCase("white") ? 'N' : 'n';
             default:
                 return '?';
         }
