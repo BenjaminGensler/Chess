@@ -35,8 +35,8 @@ public class Pawn extends Piece {
         }
 
         // Check if 2 spaces forward is empty (space in between must be empty)
-        else if((board.getPiece(fromX, fromY).getColor().equals("white") && fromX == 1 && toX == fromX + 2 && toY == fromY && board.getPiece(fromX + 1, fromY) == null && board.getPiece(fromX, fromY) != null && board.getPiece(toX, toY) == null && board.getPiece (toX - 1, toY - 1) == null) ||
-                (board.getPiece(fromX, fromY).getColor().equals("black") && fromX == 6 && toX == fromX - 2 && toY == fromY && board.getPiece(fromX - 1, fromY) == null && board.getPiece(fromX, fromY) != null && board.getPiece(toX, toY) == null && board.getPiece (toX + 1, toY + 1) == null)) {
+        else if((board.getPiece(fromX, fromY).getColor().equals("white") && fromX == 1 && toX == fromX + 2 && toY == fromY && board.getPiece(fromX + 1, fromY) == null && board.getPiece(fromX, fromY) != null && board.getPiece(toX, toY) == null) ||
+                (board.getPiece(fromX, fromY).getColor().equals("black") && fromX == 6 && toX == fromX - 2 && toY == fromY && board.getPiece(fromX - 1, fromY) == null && board.getPiece(fromX, fromY) != null && board.getPiece(toX, toY) == null)) {
             // System.out.println("isLegalMove() 2");
             return true;
         } 
