@@ -19,6 +19,8 @@ public class Piece {
         switch (type.toLowerCase()) {
             case "pawn":
                 return color.equalsIgnoreCase("white") ? 'P' : 'p';
+            case "rook":
+                return color.equalsIgnoreCase("white") ? 'R' : 'r';
             default:
                 return '?';
         }

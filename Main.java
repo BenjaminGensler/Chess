@@ -13,6 +13,12 @@ public class Main {
             board.placePiece(1, i, new Pawn("white"));
         }
 
+        // Adds Rooks
+        board.placePiece(0, 0, new Rook("white"));
+        board.placePiece(0, 7, new Rook("white"));
+        board.placePiece(7, 0, new Rook("black"));
+        board.placePiece(7, 7, new Rook("black"));
+
         board.printBoard();
 
         while(true) {
