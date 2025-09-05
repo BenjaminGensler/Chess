@@ -25,6 +25,12 @@ public class Main {
         board.placePiece(7, 1, new Knight("black"));
         board.placePiece(7, 6, new Knight("black"));
 
+        // Add Bishops
+        board.placePiece(0, 2, new Bishop("white"));
+        board.placePiece(0, 5, new Bishop("white"));
+        board.placePiece(7, 2, new Bishop("black"));
+        board.placePiece(7, 5, new Bishop("black"));
+
         board.printBoard();
 
         while(true) {

@@ -23,6 +23,8 @@ public class Piece {
                 return color.equalsIgnoreCase("white") ? 'R' : 'r';
             case "knight":
                 return color.equalsIgnoreCase("white") ? 'N' : 'n';
+            case "bishop":
+                return color.equalsIgnoreCase("white") ? 'B' : 'b';
             default:
                 return '?';
         }
