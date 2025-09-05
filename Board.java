@@ -70,6 +70,19 @@ class Board {
             kingY = blackKingY;
         }
 
+        // Check if Pawns can attack the King
+        if (color.equals("white")) {
+            if ((this.getPiece(kingX - 1, kingY + 1) != null && this.getPiece(kingX - 1, kingY + 1).getType().equals("Pawn") && this.getPiece(kingX - 1, kingY + 1).getColor().equals("black")) ||
+                (this.getPiece(kingX + 1, kingY + 1) != null && this.getPiece(kingX + 1, kingY + 1).getType().equals("Pawn") && this.getPiece(kingX + 1, kingY + 1).getColor().equals("black"))) {
+                return true;
+            }
+        } else {
+            if ((this.getPiece(kingX - 1, kingY - 1) != null && this.getPiece(kingX - 1, kingY - 1).getType().equals("Pawn") && this.getPiece(kingX - 1, kingY - 1).getColor().equals("white")) ||
+                (this.getPiece(kingX + 1, kingY - 1) != null && this.getPiece(kingX + 1, kingY - 1).getType().equals("Pawn") && this.getPiece(kingX + 1, kingY - 1).getColor().equals("white"))) {
+                return true;
+            }
+        }
+
         // Check if Knights can attack the king
         if ((this.getPiece(kingX - 1, kingY - 2) != null && this.getPiece(kingX - 1, kingY - 2).getType().equals("Knight")) && !this.getPiece(kingX - 1, kingY - 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
             (this.getPiece(kingX - 1, kingY + 2) != null && this.getPiece(kingX - 1, kingY + 2).getType().equals("Knight")) && !this.getPiece(kingX - 1, kingY + 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
@@ -82,16 +95,41 @@ class Board {
             return true;
         }
 
-        // Check if Pawns can attack the King
-        if (color.equals("white")) {
-            if ((this.getPiece(kingX - 1, kingY + 1) != null && this.getPiece(kingX - 1, kingY + 1).getType().equals("Pawn") && this.getPiece(kingX - 1, kingY + 1).getColor().equals("black")) ||
-                (this.getPiece(kingX + 1, kingY + 1) != null && this.getPiece(kingX + 1, kingY + 1).getType().equals("Pawn") && this.getPiece(kingX + 1, kingY + 1).getColor().equals("black"))) {
-                return true;
+        // Check if Rooks or Queens can attack the king (horizontal and vertical)
+        int directions[][] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        for (int[] dir : directions) {
+            int x = kingX + dir[0];
+            int y = kingY + dir[1];
+            while (x >= 0 && x < 8 && y >= 0 && y < 8) {
+                if (getPiece(x, y) != null) {
+                    if ((getPiece(x, y).getType().equals("Rook") || getPiece(x, y).getType().equals("Queen")) &&
+                        !getPiece(x, y).getColor().equals(this.getPiece(kingX, kingY).getColor())) {
+                        return true;
+                    } else {
+                        break; // Blocked by another piece
+                    }
+                }
+                x += dir[0];
+                y += dir[1];
             }
-        } else {
-            if ((this.getPiece(kingX - 1, kingY - 1) != null && this.getPiece(kingX - 1, kingY - 1).getType().equals("Pawn") && this.getPiece(kingX - 1, kingY - 1).getColor().equals("white")) ||
-                (this.getPiece(kingX + 1, kingY - 1) != null && this.getPiece(kingX + 1, kingY - 1).getType().equals("Pawn") && this.getPiece(kingX + 1, kingY - 1).getColor().equals("white"))) {
-                return true;
+        }
+
+        // Check if Bishop or Queens can attack the king (diagonal)
+        int diagonalDirections[][] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+        for (int[] dir : diagonalDirections) {
+            int x = kingX + dir[0];
+            int y = kingY + dir[1];
+            while (x >= 0 && x < 8 && y >= 0 && y < 8) {
+                if (getPiece(x, y) != null) {
+                    if ((getPiece(x, y).getType().equals("Bishop") || getPiece(x, y).getType().equals("Queen")) &&
+                        !getPiece(x, y).getColor().equals(this.getPiece(kingX, kingY).getColor())) {
+                        return true;
+                    } else {
+                        break; // Blocked by another piece
+                    }
+                }
+                x += dir[0];
+                y += dir[1];
             }
         }
 
