@@ -35,6 +35,10 @@ public class Main {
         board.placePiece(0, 3, new Queen("white"));
         board.placePiece(7, 3, new Queen("black"));
 
+        //Add Kings
+        board.placePiece(0, 4, new King("white"));
+        board.placePiece(7, 4, new King("black"));
+
         board.printBoard();
 
         while(true) {
