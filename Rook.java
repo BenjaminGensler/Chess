@@ -17,7 +17,7 @@ public class Rook extends Piece {
         // Check for other pieces in path
         if(fromX == toX) { // Vertical move
             int step = (toY > fromY) ? 1 : -1;
-            for(int y = fromY + step; y <= toY; y += step) {
+            for(int y = fromY + step; y != toY; y += step) {
                 if(board.getPiece(fromX, y) != null) {
                     return false; // Path is blocked
                 }

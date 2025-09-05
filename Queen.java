@@ -28,21 +28,23 @@ public class Queen extends Piece {
         if(fromX == toX || fromY == toY) {
             System.out.println("Queen isLegalMove() 3");
             // Check for other pieces in path
-            if(fromX == toX) { // Vertical move
-                System.out.println("Queen isLegalMove() Vertical");
+            if(fromX == toX) { // Horizontal move
+                System.out.println("Queen isLegalMove() Horizontal");
                 int step = (toY > fromY) ? 1 : -1;
-                for(int y = fromY + step; y <= toY; y += step) {
+                for(int y = fromY + step; y != toY; y += step) {
+                    // Debugging output
+                    System.out.println(board.getPiece(fromX, y));
                     if(board.getPiece(fromX, y) != null) {
-                        System.out.println("Queen isLegalMove() Vertical Blocked");
+                        System.out.println("Queen isLegalMove() Horizontal Blocked");
                         return false; // Path is blocked
                     }
                 }
-            } else { // Horizontal move
-                System.out.println("Queen isLegalMove() Horizontal");
+            } else { // Vertical move
+                System.out.println("Queen isLegalMove() Vertical");
                 int step = (toX > fromX) ? 1 : -1;
                 for(int x = fromX + step; x != toX; x += step) {
                     if(board.getPiece(x, fromY) != null) {
-                        System.out.println("Queen isLegalMove() Horizontal Blocked");
+                        System.out.println("Queen isLegalMove() Vertical Blocked");
                         return false; // Path is blocked
                     }
                 }
