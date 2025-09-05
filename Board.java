@@ -71,12 +71,14 @@ class Board {
         }
 
         // Check if Knights can attack the king
-        if ((this.getPiece(kingX - 1, kingY - 2) != null && this.getPiece(kingX - 1, kingY - 2).getType().equals("Knight")) ||
-            (this.getPiece(kingX + 1, kingY - 2) != null && this.getPiece(kingX + 1, kingY - 2).getType().equals("Knight"))) {
-            return true;
-        }
-        else if((this.getPiece(kingX - 2, kingY - 1) != null && this.getPiece(kingX - 2, kingY - 1).getType().equals("Knight")) ||
-                 (this.getPiece(kingX + 2, kingY - 1) != null && this.getPiece(kingX + 2, kingY - 1).getType().equals("Knight"))) {
+        if ((this.getPiece(kingX - 1, kingY - 2) != null && this.getPiece(kingX - 1, kingY - 2).getType().equals("Knight")) && !this.getPiece(kingX - 1, kingY - 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX - 1, kingY + 2) != null && this.getPiece(kingX - 1, kingY + 2).getType().equals("Knight")) && !this.getPiece(kingX - 1, kingY + 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX + 1, kingY - 2) != null && this.getPiece(kingX + 1, kingY - 2).getType().equals("Knight")) && !this.getPiece(kingX + 1, kingY - 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX + 1, kingY + 2) != null && this.getPiece(kingX + 1, kingY + 2).getType().equals("Knight")) && !this.getPiece(kingX + 1, kingY + 2).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX - 2, kingY - 1) != null && this.getPiece(kingX - 2, kingY - 1).getType().equals("Knight")) && !this.getPiece(kingX - 2, kingY - 1).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX - 2, kingY + 1) != null && this.getPiece(kingX - 2, kingY + 1).getType().equals("Knight")) && !this.getPiece(kingX - 2, kingY + 1).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX + 2, kingY - 1) != null && this.getPiece(kingX + 2, kingY - 1).getType().equals("Knight")) && !this.getPiece(kingX + 2, kingY - 1).getColor().equals(this.getPiece(kingX, kingY).getColor()) ||
+            (this.getPiece(kingX + 2, kingY + 1) != null && this.getPiece(kingX + 2, kingY + 1).getType().equals("Knight")) && !this.getPiece(kingX + 2, kingY + 1).getColor().equals(this.getPiece(kingX, kingY).getColor())) {
             return true;
         }
 
