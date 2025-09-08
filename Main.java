@@ -7,37 +7,43 @@ public class Main {
 
         Board board = new Board();
 
-        // Adds white/black Pawns
-        for(int i = 0; i < 8; i++) {
-            board.placePiece(6, i, new Pawn("black"));
-            board.placePiece(1, i, new Pawn("white"));
-        }
+        // // Adds white/black Pawns
+        // for(int i = 0; i < 8; i++) {
+        //     board.placePiece(6, i, new Pawn("black"));
+        //     board.placePiece(1, i, new Pawn("white"));
+        // }
 
-        // Adds Rooks
-        board.placePiece(0, 0, new Rook("white"));
-        board.placePiece(0, 7, new Rook("white"));
-        board.placePiece(7, 0, new Rook("black"));
-        board.placePiece(7, 7, new Rook("black"));
+        // // Adds Rooks
+        // board.placePiece(0, 0, new Rook("white"));
+        // board.placePiece(0, 7, new Rook("white"));
+        // board.placePiece(7, 0, new Rook("black"));
+        // board.placePiece(7, 7, new Rook("black"));
 
-        // Add Knights
-        board.placePiece(0, 1, new Knight("white"));
-        board.placePiece(0, 6, new Knight("white"));
-        board.placePiece(7, 1, new Knight("black"));
-        board.placePiece(7, 6, new Knight("black"));
+        // // Add Knights
+        // board.placePiece(0, 1, new Knight("white"));
+        // board.placePiece(0, 6, new Knight("white"));
+        // board.placePiece(7, 1, new Knight("black"));
+        // board.placePiece(7, 6, new Knight("black"));
 
-        // Add Bishops
-        board.placePiece(0, 2, new Bishop("white"));
-        board.placePiece(0, 5, new Bishop("white"));
-        board.placePiece(7, 2, new Bishop("black"));
-        board.placePiece(7, 5, new Bishop("black"));
+        // // Add Bishops
+        // board.placePiece(0, 2, new Bishop("white"));
+        // board.placePiece(0, 5, new Bishop("white"));
+        // board.placePiece(7, 2, new Bishop("black"));
+        // board.placePiece(7, 5, new Bishop("black"));
 
-        //Add Queens
-        board.placePiece(0, 3, new Queen("white"));
-        board.placePiece(7, 3, new Queen("black"));
+        // //Add Queens
+        // board.placePiece(0, 3, new Queen("white"));
+        // board.placePiece(7, 3, new Queen("black"));
 
-        //Add Kings
-        board.placePiece(0, 4, new King("white"));
-        board.placePiece(7, 4, new King("black"));
+        // //Add Kings
+        // board.placePiece(0, 4, new King("white"));
+        // board.placePiece(7, 4, new King("black"));
+
+        // Checkmate testing setup
+        board.placePiece(0, 0, new King("white"));
+        board.placePiece(1, 2, new Rook("black"));
+        board.placePiece(2, 3, new Rook("black"));
+        board.placePiece(7, 7, new King("black"));
 
         board.printBoard();
 

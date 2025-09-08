@@ -40,11 +40,29 @@ class Board {
                 
                 //check if king is in check after move
                 if(this.isKingInCheck(this.getPiece(toX, toY).getColor())) {
+                    
                     // returns pieces back to original position if king is in check
                     System.out.println("You can't move there, King is in check!");
                     this.placePiece(fromX, fromY, this.getPiece(toX, toY));
                     this.placePiece(toX, toY, null);
+                    return;
                 }
+
+                if(this.isCheckmate(this.getPiece(toX, toY).getColor().equals("white") ? "black" : "white")) {
+                    this.printBoard();
+                    System.out.println("Checkmate! " + (this.getPiece(toX, toY).getColor().equals("white") ? "White" : "Black") + " wins!");
+                    System.exit(0);
+                }
+            }
+        }
+    }
+
+    // Silent move for simulation (does not print or undo)
+    public void movePieceSilent(int fromX, int fromY, int toX, int toY) {
+        if (this.getPiece(fromX, fromY) != null) {
+            if (this.getPiece(fromX, fromY).isLegalMove(fromX, fromY, toX, toY, this)) {
+                this.placePiece(toX, toY, this.getPiece(fromX, fromY));
+                this.placePiece(fromX, fromY, null);
             }
         }
     }
@@ -136,6 +154,35 @@ class Board {
         return false; // King is not in check
     }
 
+    public boolean isCheckmate(String color) {
+        if (!isKingInCheck(color)) {
+            return false;
+        }
+
+        // Try every piece of the given color
+        for (int fromX = 0; fromX < 8; fromX++) {
+            for (int fromY = 0; fromY < 8; fromY++) {
+                Piece piece = getPiece(fromX, fromY);
+                if (piece != null && piece.getColor().equalsIgnoreCase(color)) {
+                    // Try every possible destination
+                    for (int toX = 0; toX < 8; toX++) {
+                        for (int toY = 0; toY < 8; toY++) {
+                            if (piece.isLegalMove(fromX, fromY, toX, toY, this)) {
+                                // Simulate the move
+                                Board copy = this.copyBoard();
+                                copy.movePieceSilent(fromX, fromY, toX, toY);
+                                if (!copy.isKingInCheck(color)) {
+                                    return false; // Found a move that gets out of check
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true; // No moves get out of check, so it's checkmate
+    }
+
     //Display the board
     public void printBoard() {
         // System.out.println("printBoard() 1");
@@ -180,5 +227,39 @@ class Board {
         System.out.println();
 
         // System.out.println("printBoard() 5");
+    }
+
+    // Copy the board (for simulating moves)
+    public Board copyBoard() {
+        Board newBoard = new Board();
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                Piece piece = this.getPiece(x, y);
+                if (piece != null) {
+                    // Create a new instance of the same piece type and color
+                    switch (piece.getType().toLowerCase()) {
+                        case "pawn":
+                            newBoard.placePiece(x, y, new Pawn(piece.getColor()));
+                            break;
+                        case "rook":
+                            newBoard.placePiece(x, y, new Rook(piece.getColor()));
+                            break;
+                        case "knight":
+                            newBoard.placePiece(x, y, new Knight(piece.getColor()));
+                            break;
+                        case "bishop":
+                            newBoard.placePiece(x, y, new Bishop(piece.getColor()));
+                            break;
+                        case "queen":
+                            newBoard.placePiece(x, y, new Queen(piece.getColor()));
+                            break;
+                        case "king":
+                            newBoard.placePiece(x, y, new King(piece.getColor()));
+                            break;
+                    }
+                }
+            }
+        }
+        return newBoard;
     }
 }
