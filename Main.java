@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,6 +7,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Board board = new Board();
+
+        Card[] deck = {
+            new PawnUpgrade()
+        };
+
+        ArrayList<Card> play1Hand = new ArrayList<>();
+        ArrayList<Card> play2Hand = new ArrayList<>();
+
+        play1Hand.add(deck[0]);
 
         // // Adds white/black Pawns
         // for(int i = 0; i < 8; i++) {
@@ -47,6 +57,8 @@ public class Main {
 
         board.printBoard();
 
+        String currentPlayer = "white";
+
         while(true) {
             // System.out.println("Main Loop 1");
             // Prompt for and read a string
@@ -63,12 +75,22 @@ public class Main {
 
             // System.out.println("Main Loop 3");
 
+            Piece movingPiece = board.getPiece(fromX, fromY);
+            if (movingPiece == null || !movingPiece.getColor().equals(currentPlayer)) {
+                System.out.println("Invalid move: No piece of yours is at the current position.");
+                continue;
+            }
+
             // Simulate a move
             board.movePiece(fromX, fromY, toX, toY);
 
             // System.out.println("Main Loop 4");
 
             board.printBoard();
+
+            // Switch player
+            currentPlayer = currentPlayer.equals("white") ? "black" : "white";
+            System.out.println("Current Player: " + currentPlayer);
         }
     }
 }
