@@ -1,6 +1,8 @@
 class Board {
     private Piece[][] board;
 
+    public String currentPlayer = "white";
+
     // Coordinates for white and black kings (Default to -1, -1 if not placed)
     private int whiteKingX = -1, whiteKingY = -1;
     private int blackKingX = -1, blackKingY = -1;
@@ -53,6 +55,9 @@ class Board {
                     System.out.println("Checkmate! " + (this.getPiece(toX, toY).getColor().equals("white") ? "White" : "Black") + " wins!");
                     System.exit(0);
                 }
+
+                // Switch player
+                this.currentPlayer = this.currentPlayer.equals("white") ? "black" : "white";
             }
         }
     }

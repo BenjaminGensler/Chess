@@ -57,8 +57,6 @@ public class Main {
 
         board.printBoard();
 
-        String currentPlayer = "white";
-
         while(true) {
             // System.out.println("Main Loop 1");
             // Prompt for and read a string
@@ -76,8 +74,8 @@ public class Main {
             // System.out.println("Main Loop 3");
 
             Piece movingPiece = board.getPiece(fromX, fromY);
-            if (movingPiece == null || !movingPiece.getColor().equals(currentPlayer)) {
-                System.out.println("Invalid move: No piece of yours is at the current position.");
+            if (!movingPiece.getColor().equals(board.currentPlayer)) {
+                System.out.println("It is " + board.currentPlayer + "'s turn.");
                 continue;
             }
 
@@ -88,9 +86,7 @@ public class Main {
 
             board.printBoard();
 
-            // Switch player
-            currentPlayer = currentPlayer.equals("white") ? "black" : "white";
-            System.out.println("Current Player: " + currentPlayer);
+            System.out.println("Current Player: " + board.currentPlayer);
         }
     }
 }
