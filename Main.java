@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,10 +11,11 @@ public class Main {
             new PawnUpgrade()
         };
 
-        ArrayList<Card> play1Hand = new ArrayList<>();
-        ArrayList<Card> play2Hand = new ArrayList<>();
+        // Hands for each player
+        Player white = new Player("white");
+        Player black = new Player("black");
 
-        play1Hand.add(deck[0]);
+        white.addCardToHand(deck[0]);
 
         // // Adds white/black Pawns
         // for(int i = 0; i < 8; i++) {
@@ -62,27 +62,36 @@ public class Main {
         while(true) {
             // System.out.println("Main Loop 1");
             // Prompt for and read a string
-            System.out.print("Enter your next move: ");
-            String userMove = scanner.nextLine();
+            System.out.println("Select an action:");
+            System.out.println("1. Move piece");
+            System.out.println("2. Play card");
+            System.out.println("3. Purchase card");
+            String userInput = scanner.nextLine();
 
-            // System.out.println("Main Loop 2");
+            if(userInput.equals("1")) {
+                System.out.print("Enter your next move: ");
+                String userMove = scanner.nextLine();
 
-            //convert move to function correct input
-            int fromY = (int) userMove.charAt(0) - 'a';
-            int fromX = Character.getNumericValue(userMove.charAt(1)) - 1;
-            int toY = (int) userMove.charAt(2) - 'a';
-            int toX = Character.getNumericValue(userMove.charAt(3)) - 1;
+                // System.out.println("Main Loop 2");
 
-            // System.out.println("Main Loop 3");
+                //convert move to function correct input
+                int fromY = (int) userMove.charAt(0) - 'a';
+                int fromX = Character.getNumericValue(userMove.charAt(1)) - 1;
+                int toY = (int) userMove.charAt(2) - 'a';
+                int toX = Character.getNumericValue(userMove.charAt(3)) - 1;
 
-            Piece movingPiece = board.getPiece(fromX, fromY);
-            if (!movingPiece.getColor().equals(board.currentPlayer)) {
-                System.out.println("It is " + board.currentPlayer + "'s turn.");
-                continue;
+                // System.out.println("Main Loop 3");
+
+                Piece movingPiece = board.getPiece(fromX, fromY);
+                if (!movingPiece.getColor().equals(board.currentPlayer)) {
+                    System.out.println("It is " + board.currentPlayer + "'s turn.");
+                    continue;
+                }
+
+                // Simulate a move
+                board.movePiece(fromX, fromY, toX, toY);
             }
 
-            // Simulate a move
-            board.movePiece(fromX, fromY, toX, toY);
 
             // System.out.println("Main Loop 4");
 
