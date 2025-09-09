@@ -7,8 +7,12 @@ public class Card {
         this.description = description;
     }
 
-    public String getCardType() {
+    public String getType() {
         return type;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     // Function that plays the card (to be overridden by subclasses)

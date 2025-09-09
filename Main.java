@@ -68,6 +68,7 @@ public class Main {
             System.out.println("3. Purchase card");
             String userInput = scanner.nextLine();
 
+            // Move a piece
             if(userInput.equals("1")) {
                 System.out.print("Enter your next move: ");
                 String userMove = scanner.nextLine();
@@ -90,6 +91,24 @@ public class Main {
 
                 // Simulate a move
                 board.movePiece(fromX, fromY, toX, toY);
+            }
+
+            // Play a card
+            else if(userInput.equals("2")) {
+                if(board.currentPlayer.equals("white")) {
+                    System.out.println("White's Hand:");
+                    // Assuming Card has a getName() method
+                    for (Card card : white.getPlayHand()) {
+                        System.out.println(card.getType());
+                        System.out.println(card.getDescription());
+                    }
+                } else {
+                    System.out.println("Black's Hand:");
+                    for (Card card : black.getPlayHand()) {
+                        System.out.println(card.getType());
+                        System.out.println(card.getDescription());
+                    }
+                }
             }
 
 
