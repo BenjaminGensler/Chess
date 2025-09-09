@@ -54,6 +54,8 @@ public class Main {
         board.placePiece(1, 2, new Rook("black"));
         board.placePiece(2, 3, new Rook("black"));
         board.placePiece(7, 7, new King("black"));
+        board.placePiece(6, 5, new Pawn("white"));
+        board.placePiece(1, 4, new Pawn("black"));
 
         board.printBoard();
 

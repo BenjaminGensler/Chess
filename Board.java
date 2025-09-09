@@ -1,4 +1,9 @@
+import java.util.Scanner;
+
 class Board {
+    // Create a Scanner object
+    Scanner scanner = new Scanner(System.in);
+
     private Piece[][] board;
 
     public String currentPlayer = "white";
@@ -39,6 +44,35 @@ class Board {
             else {
                 this.placePiece(toX, toY, this.getPiece(fromX, fromY));
                 this.placePiece(fromX, fromY, null);
+
+                if(this.getPiece(toX, toY).getType().equals("Pawn")) {
+                    // Pawn promotion
+                    if((this.getPiece(toX, toY).getColor().equals("white") && toX == 7) ||
+                       (this.getPiece(toX, toY).getColor().equals("black") && toX == 0)) {
+                        System.out.println("Pawn promoted! Please select a piece to promote to (Rook, Knight, Bishop, Queen): ");
+                        Scanner scanner = new Scanner(System.in);
+                        String promotionChoice = scanner.nextLine();
+
+                        switch (promotionChoice.toLowerCase()) {
+                            case "rook":
+                                this.placePiece(toX, toY, new Rook(this.getPiece(toX, toY).getColor()));
+                                break;
+                            case "knight":
+                                this.placePiece(toX, toY, new Knight(this.getPiece(toX, toY).getColor()));
+                                break;
+                            case "bishop":
+                                this.placePiece(toX, toY, new Bishop(this.getPiece(toX, toY).getColor()));
+                                break;
+                            case "queen":
+                                this.placePiece(toX, toY, new Queen(this.getPiece(toX, toY).getColor()));
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Promoting to Queen by default.");
+                                this.placePiece(toX, toY, new Queen(this.getPiece(toX, toY).getColor()));
+                                break;
+                        }
+                    }
+                }
                 
                 //check if king is in check after move
                 if(this.isKingInCheck(this.getPiece(toX, toY).getColor())) {
