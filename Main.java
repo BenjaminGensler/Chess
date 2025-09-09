@@ -15,6 +15,10 @@ public class Main {
         Player white = new Player("white");
         Player black = new Player("black");
 
+        // Set currentPlayerObj to the correct Player object
+        Player currentPlayerObj = board.currentPlayer.equals("white") ? white : black;
+
+
         white.addCardToHand(deck[0]);
 
         // // Adds white/black Pawns
@@ -95,20 +99,36 @@ public class Main {
 
             // Play a card
             else if(userInput.equals("2")) {
-                if(board.currentPlayer.equals("white")) {
-                    System.out.println("White's Hand:");
-                    // Assuming Card has a getName() method
-                    for (Card card : white.getPlayHand()) {
-                        System.out.println(card.getType());
-                        System.out.println(card.getDescription());
-                    }
-                } else {
-                    System.out.println("Black's Hand:");
-                    for (Card card : black.getPlayHand()) {
-                        System.out.println(card.getType());
-                        System.out.println(card.getDescription());
-                    }
+                // Check if the current player has any cards
+                if(currentPlayerObj.getPlayHand().isEmpty()) {
+                    System.out.println("You have no cards to play.");
+                    continue;
                 }
+
+                System.out.println(board.currentPlayer + "'s Hand:");
+                for (int i = 0; i < currentPlayerObj.getPlayHand().size(); i++) {
+                    Card card = currentPlayerObj.getPlayHand().get(i);
+                    System.out.println((i+1) + ". " + card.getType());
+                    System.out.println(card.getDescription());
+                }
+
+                Scanner cardScanner = new Scanner(System.in);
+                System.out.print("Select a card to play: ");
+                int cardInput = cardScanner.nextInt();
+
+                if(cardInput < 1 || cardInput > currentPlayerObj.getPlayHand().size()) {
+                    System.out.println("Invalid card selection.");
+                    continue;
+                }
+
+                Card selectedCard = currentPlayerObj.getPlayHand().get(cardInput - 1);
+                // Delete the card from the players hand
+                currentPlayerObj.getPlayHand().remove(cardInput - 1);
+
+                // Play the selected card...
+
+                System.out.println("You played: " + selectedCard.getType());
+
             }
 
 
