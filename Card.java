@@ -16,7 +16,7 @@ public class Card {
     }
 
     // Function that plays the card (to be overridden by subclasses)
-    public void playCard() {
+    public void playCard(Board board) {
         return;
     }
 }

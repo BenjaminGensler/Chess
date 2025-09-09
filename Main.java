@@ -121,16 +121,19 @@ public class Main {
                     continue;
                 }
 
+                // Get the selected card
                 Card selectedCard = currentPlayerObj.getPlayHand().get(cardInput - 1);
-                // Delete the card from the players hand
-                currentPlayerObj.getPlayHand().remove(cardInput - 1);
-
-                // Play the selected card...
 
                 System.out.println("You played: " + selectedCard.getType());
 
-            }
+                // Play the selected cards playCard() function
+                selectedCard.playCard(board);
 
+                // Delete the card from the players hand
+                currentPlayerObj.getPlayHand().remove(cardInput - 1);
+
+
+            }
 
             // System.out.println("Main Loop 4");
 
