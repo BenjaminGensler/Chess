@@ -1,3 +1,6 @@
+package pieces;
+import board.*;
+
 public class Pawn extends Piece {
     public Pawn(String color) {
         super(color, "Pawn");

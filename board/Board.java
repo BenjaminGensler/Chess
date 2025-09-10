@@ -1,6 +1,9 @@
-import java.util.Scanner;
+package board;
 
-class Board {
+import java.util.Scanner;
+import pieces.*;
+
+public class Board {
     // Create a Scanner object
     Scanner scanner = new Scanner(System.in);
 

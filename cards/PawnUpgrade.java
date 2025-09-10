@@ -1,3 +1,7 @@
+package cards;
+import pieces.*;
+import board.*;
+
 import java.util.Scanner;
 
 public class PawnUpgrade extends Card {
@@ -21,6 +25,12 @@ public class PawnUpgrade extends Card {
 
         // logic of pawn upgrade
         Piece pawn = board.getPiece(pieceX, pieceY);
+
+        if (pawn == null) {
+            System.out.println("No piece found at that position.");
+            return;
+        }
+        
         if (board.getPiece(pieceX, pieceY).getType() == "Pawn" && pawn.getColor().equals(board.currentPlayer)) {
             System.out.println("Promote your pawn to:");
             System.out.println("1. Rook");

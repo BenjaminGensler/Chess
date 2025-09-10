@@ -1,3 +1,6 @@
+package cards;
+import board.*;
+
 public class Card {
     private String description;
     private String type;

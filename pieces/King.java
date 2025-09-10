@@ -1,3 +1,6 @@
+package pieces;
+import board.*;
+
 public class King extends Piece {
     public King(String color) {
         super(color, "King");

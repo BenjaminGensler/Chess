@@ -1,3 +1,6 @@
+package pieces;
+import board.*;
+
 public class Piece {
     private String color;
     private String type;

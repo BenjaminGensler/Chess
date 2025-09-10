@@ -1,3 +1,6 @@
+import cards.*;
+import pieces.*;
+import board.*;
 import java.util.Scanner;
 
 public class Main {
