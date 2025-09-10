@@ -138,6 +138,26 @@ public class Main {
 
             }
 
+            // Purchase a card
+            else if(userInput.equals("3")) {
+                Shop shop = new Shop();
+                shop.displayShop();
+
+                Scanner shopScanner = new Scanner(System.in);
+                System.out.print("Select a card to purchase (1-3): ");
+                int shopInput = shopScanner.nextInt();
+
+                Card purchasedCard = shop.buyCard(shopInput);
+                if (purchasedCard != null) {
+                    currentPlayerObj.addCardToHand(purchasedCard);
+                }
+            }
+            // Invalid input
+            else {
+                System.out.println("Invalid action. Please select 1, 2, or 3.");
+                continue;
+            }
+
             // System.out.println("Main Loop 4");
 
             board.printBoard();
