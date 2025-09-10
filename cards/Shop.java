@@ -32,6 +32,7 @@ public class Shop {
         for (Card card : availableCards) {
             if (card != null && count <= 3) {
                 System.out.println(count + ". " + card.getType() + ": " + card.getDescription());
+                System.out.println("Cost: " + card.getCost());
                 count++;
             }
         }
