@@ -9,7 +9,7 @@ public class Card {
     public Card(String type, String description, int cost) {
         this.type = type;
         this.description = description;
-        this.cost = 5; // Default Cost
+        this.cost = cost;
     }
 
     public String getType() {

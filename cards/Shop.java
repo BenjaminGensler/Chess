@@ -40,9 +40,17 @@ public class Shop {
     }
 
 
-    public Card buyCard(int choice) {
+    public Card buyCard(int choice, int playerPoints) {
+         if(availableCards.isEmpty()) {
+            System.out.println("The shop is currently out of cards.");
+            return null;
+        }
         if (choice < 1 || choice > 3) {
             System.out.println("Invalid choice. Please select a valid card number.");
+            return null;
+        }
+        if(playerPoints < availableCards.get(choice - 1).getCost()) {
+            System.out.println("You do not have enough points to purchase this card.");
             return null;
         }
 

@@ -149,9 +149,11 @@ public class Main {
                     System.out.print("Select a card to purchase (1-3): ");
                     int shopInput = shopScanner.nextInt();
 
-                    Card purchasedCard = shop.buyCard(shopInput);
+                    Card purchasedCard = shop.buyCard(shopInput, currentPlayerObj.getPoints());
                     if (purchasedCard != null) {
                         currentPlayerObj.addCardToHand(purchasedCard);
+                        // Deduct points from the player
+                        currentPlayerObj.setPoints(-purchasedCard.getCost());
                     }
                 }
             }

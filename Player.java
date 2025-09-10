@@ -9,7 +9,7 @@ public class Player {
     public Player(String color) {
         this.color = color;
         this.playHand = new ArrayList<>();
-        this.points = 0;
+        this.points = 5;
     }
 
     public String getColor() {
@@ -18,6 +18,15 @@ public class Player {
 
     public ArrayList<Card> getPlayHand() {
         return playHand;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public String setPoints(int points) {
+        this.points += points;
+        return "Player " + color + " now has " + this.points + " points.";
     }
 
     public ArrayList<Card> addCardToHand(Card card) {

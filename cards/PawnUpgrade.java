@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PawnUpgrade extends Card {
     public PawnUpgrade() {
-        super("Pawn Upgrade", "Promote a pawn to a rook, bishop, or knight immediately.");
+        super("Pawn Upgrade", "Promote a pawn to a rook, bishop, or knight immediately.", 5);
     }
 
     public void playCard(Board board) {
