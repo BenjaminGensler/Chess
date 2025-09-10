@@ -14,6 +14,8 @@ public class Main {
             new PawnUpgrade()
         };
 
+        Shop shop = new Shop();
+
         // Hands for each player
         Player white = new Player("white");
         Player black = new Player("black");
@@ -140,16 +142,17 @@ public class Main {
 
             // Purchase a card
             else if(userInput.equals("3")) {
-                Shop shop = new Shop();
-                shop.displayShop();
+                Boolean shopAvailable =  shop.displayShop();
 
-                Scanner shopScanner = new Scanner(System.in);
-                System.out.print("Select a card to purchase (1-3): ");
-                int shopInput = shopScanner.nextInt();
+                if(shopAvailable) {
+                    Scanner shopScanner = new Scanner(System.in);
+                    System.out.print("Select a card to purchase (1-3): ");
+                    int shopInput = shopScanner.nextInt();
 
-                Card purchasedCard = shop.buyCard(shopInput);
-                if (purchasedCard != null) {
-                    currentPlayerObj.addCardToHand(purchasedCard);
+                    Card purchasedCard = shop.buyCard(shopInput);
+                    if (purchasedCard != null) {
+                        currentPlayerObj.addCardToHand(purchasedCard);
+                    }
                 }
             }
             // Invalid input
