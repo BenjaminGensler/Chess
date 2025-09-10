@@ -20,9 +20,6 @@ public class PawnUpgrade extends Card {
         int pieceX = Character.getNumericValue(userMove.charAt(1)) - 1;
         int pieceY = (int) userMove.charAt(0) - 'a';
 
-        System.out.println("Selected Piece Type: " + board.getPiece(pieceX, pieceY).getType());
-        System.out.println("Selected position: " + pieceX + ", " + pieceY);
-
         // logic of pawn upgrade
         Piece pawn = board.getPiece(pieceX, pieceY);
 
@@ -30,7 +27,7 @@ public class PawnUpgrade extends Card {
             System.out.println("No piece found at that position.");
             return;
         }
-        
+
         if (board.getPiece(pieceX, pieceY).getType() == "Pawn" && pawn.getColor().equals(board.currentPlayer)) {
             System.out.println("Promote your pawn to:");
             System.out.println("1. Rook");
