@@ -4,10 +4,12 @@ import board.*;
 public class Piece {
     private String color;
     private String type;
+    private int points;
 
-    public Piece(String color, String type) {
+    public Piece(String color, String type, int points) {
         this.color = color;
         this.type = type;
+        this.points = points;
     }
 
     public String getColor() {
@@ -16,6 +18,10 @@ public class Piece {
 
     public String getType() {
         return type;
+    }
+
+    public int getPoints() {
+        return points;
     }
 
     public char getLetter() {

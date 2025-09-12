@@ -3,7 +3,7 @@ import board.*;
 
 public class Pawn extends Piece {
     public Pawn(String color) {
-        super(color, "Pawn");
+        super(color, "Pawn", 1);
     }
 
     // Pawns can move forward one square, or two squares from their starting position

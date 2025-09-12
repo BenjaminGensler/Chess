@@ -3,7 +3,7 @@ import board.*;
 
 public class Bishop extends Piece {
     public Bishop(String color) {
-        super(color, "Bishop");
+        super(color, "Bishop", 3);
     }
 
     // Bishops can move any number of squares diagonally

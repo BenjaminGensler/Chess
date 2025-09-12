@@ -3,7 +3,7 @@ import board.*;
 
 public class King extends Piece {
     public King(String color) {
-        super(color, "King");
+        super(color, "King", 0);
     }
 
     public boolean isLegalMove(int fromX, int fromY, int toX, int toY, Board board) {

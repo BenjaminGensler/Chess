@@ -3,7 +3,7 @@ import board.*;
 
 public class Knight extends Piece {
     public Knight(String color) {
-        super(color, "Knight");
+        super(color, "Knight", 3);
     }
 
     // Knights can move forward one square, or two squares from their starting position

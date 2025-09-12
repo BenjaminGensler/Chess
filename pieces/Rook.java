@@ -3,7 +3,7 @@ import board.*;
 
 public class Rook extends Piece {
     public Rook(String color) {
-        super(color, "Rook");
+        super(color, "Rook", 3);
     }
 
     // Rooks can move any number of square horizontally or vertically

@@ -3,7 +3,7 @@ import board.*;
 
 public class Queen extends Piece {
     public Queen(String color) {
-        super(color, "Queen");
+        super(color, "Queen", 5);
     }
 
     // Queens can move any number of squares diagonally or straight
