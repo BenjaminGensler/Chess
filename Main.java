@@ -11,7 +11,8 @@ public class Main {
         Board board = new Board();
 
         Card[] deck = {
-            new PawnUpgrade()
+            new PawnUpgrade(),
+            new Skip()
         };
 
         Shop shop = new Shop();
@@ -24,7 +25,7 @@ public class Main {
         Player currentPlayerObj = board.currentPlayer.equals("white") ? white : black;
 
 
-        white.addCardToHand(deck[0]);
+        white.addCardToHand(deck[1]);
 
         // // Adds white/black Pawns
         // for(int i = 0; i < 8; i++) {

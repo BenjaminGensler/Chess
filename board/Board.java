@@ -11,6 +11,8 @@ public class Board {
 
     public String currentPlayer = "white";
 
+    private boolean skipNextTurn = false;
+
     // Coordinates for white and black kings (Default to -1, -1 if not placed)
     private int whiteKingX = -1, whiteKingY = -1;
     private int blackKingX = -1, blackKingY = -1;
@@ -18,6 +20,15 @@ public class Board {
     // Board constructor
     public Board() {
         board = new Piece[8][8];
+    }
+
+    public void switchPlayer() {
+        if (skipNextTurn) {
+            System.out.println(currentPlayer + "'s turn is skipped!");
+            skipNextTurn = false; // Reset the flag
+        } else {
+            currentPlayer = currentPlayer.equals("white") ? "black" : "white";
+        }
     }
 
     // Places object on board to x y position
@@ -94,7 +105,7 @@ public class Board {
                 }
 
                 // Switch player
-                this.currentPlayer = this.currentPlayer.equals("white") ? "black" : "white";
+                switchPlayer();
             }
         }
     }
@@ -303,5 +314,13 @@ public class Board {
             }
         }
         return newBoard;
+    }
+
+    public boolean isSkipNextTurn() {
+        return skipNextTurn;
+    }
+
+    public void setSkipNextTurn(boolean skip) {
+        this.skipNextTurn = skip;
     }
 }
