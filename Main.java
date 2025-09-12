@@ -19,10 +19,11 @@ public class Main {
         Card[] deck = {
             new PawnUpgrade(),
             new Skip(),
-            new Kamikaze()
+            new Kamikaze(),
+            new BuildQueen()
         };
 
-        white.addCardToHand(deck[2]);
+        white.addCardToHand(deck[3]);
 
         // Set currentPlayerObj to the correct Player object
         Player currentPlayerObj = board.currentPlayer.equals("white") ? white : black;
@@ -67,6 +68,7 @@ public class Main {
         board.placePiece(6, 5, new Pawn("white"));
         board.placePiece(1, 4, new Pawn("black"));
         board.placePiece(3, 4, new Bishop("white"));
+        board.placePiece(5, 4, new Rook("white"));
 
         board.printBoard();
 
