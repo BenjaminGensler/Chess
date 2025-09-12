@@ -47,6 +47,11 @@ public class Board {
         }
     }
 
+    public void removePiece(int x, int y) {
+        Piece piece = getPiece(x, y);
+        board[x][y] = null;
+    }
+
     // moves object on board to x y position
     public void movePiece(int fromX, int fromY, int toX, int toY) {
         if (this.getPiece(fromX, fromY) != null) {
