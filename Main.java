@@ -10,22 +10,22 @@ public class Main {
 
         Board board = new Board();
 
-        Card[] deck = {
-            new PawnUpgrade(),
-            new Skip()
-        };
-
         Shop shop = new Shop();
 
         // Hands for each player
         Player white = new Player("white");
         Player black = new Player("black");
 
+        Card[] deck = {
+            new PawnUpgrade(),
+            new Skip(),
+            new Kamikaze()
+        };
+
+        white.addCardToHand(deck[2]);
+
         // Set currentPlayerObj to the correct Player object
         Player currentPlayerObj = board.currentPlayer.equals("white") ? white : black;
-
-
-        white.addCardToHand(deck[1]);
 
         // // Adds white/black Pawns
         // for(int i = 0; i < 8; i++) {
