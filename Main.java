@@ -65,6 +65,7 @@ public class Main {
         board.placePiece(7, 7, new King("black"));
         board.placePiece(6, 5, new Pawn("white"));
         board.placePiece(1, 4, new Pawn("black"));
+        board.placePiece(3, 4, new Bishop("white"));
 
         board.printBoard();
 
@@ -98,8 +99,25 @@ public class Main {
                     continue;
                 }
 
+                String previousColor = board.currentPlayer;
+
                 // Simulate a move
                 board.movePiece(fromX, fromY, toX, toY);
+
+                if(previousColor != board.currentPlayer) {
+                    // Add points for capturing pieces
+                    Player capturingPlayer = previousColor.equals("white") ? white : black;
+                    Piece capturedPiece = board.getPiece(toX, toY);
+                    capturingPlayer.setPoints(capturedPiece.getPoints());
+
+                    System.out.println("Player " + capturingPlayer.getColor() + " captured a " + capturedPiece.getType() + " and earned " + capturedPiece.getPoints() + " points!");
+
+                    Player losingPlayer = previousColor.equals("white") ? black : white;
+                    losingPlayer.setPoints(1);
+
+                    System.out.println("Player " + losingPlayer.getColor() + " lost a piece and lost 1 point.");
+
+                }
             }
 
             // Play a card
