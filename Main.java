@@ -111,12 +111,13 @@ public class Main {
                     capturingPlayer.setPoints(capturedPiece.getPoints());
 
                     System.out.println("Player " + capturingPlayer.getColor() + " captured a " + capturedPiece.getType() + " and earned " + capturedPiece.getPoints() + " points!");
+                    System.out.println("Player " + capturingPlayer.getColor() + " now has " + capturingPlayer.getPoints() + " points.");
 
                     Player losingPlayer = previousColor.equals("white") ? black : white;
                     losingPlayer.setPoints(1);
 
                     System.out.println("Player " + losingPlayer.getColor() + " lost a piece and lost 1 point.");
-
+                    System.out.println("Player " + losingPlayer.getColor() + " now has " + losingPlayer.getPoints() + " points.");
                 }
             }
 
